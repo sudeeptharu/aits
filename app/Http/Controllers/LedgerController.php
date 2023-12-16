@@ -16,8 +16,11 @@ class LedgerController extends Controller
      */
     public function index()
     {
+//        $data=Ledger::find('26');
+//        dd($data->amount);
         $ledgers=Ledger::with('group')->get();
         $ledger_groups=LedgerGroup::all();
+//        dd($ledgers);
         return view('dashboard.pages.ledgers',compact('ledgers','ledger_groups'));
     }
 
@@ -31,6 +34,7 @@ class LedgerController extends Controller
             'group_identifier'=>'nullable|string'
         ]);
         $ledger=Ledger::create($data);
+        dd($ledger->getLedgerClassification());
         $transactions=Transaction::where('transaction_no',1)->first();
         if($transactions){
             $this->createTransactionEntry($transactions->id,$ledger->id,$request->openingBalance,$ledger->getLedgerClassification());

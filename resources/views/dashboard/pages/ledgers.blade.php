@@ -27,6 +27,9 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_ledger">
                                     Add Ledger
                                 </button>
+                                <a href="{{url('/ledger-group/recursion')}}">Balance Sheet</a>
+                                <a href="{{url('/ledger-group/incomeStatement')}}">Income Statement</a>
+
                             </div>
                             <div class="card-body">
                                 <table id="example2" class="table table-bordered table-striped">

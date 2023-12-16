@@ -143,7 +143,6 @@ class LedgerTypeController extends Controller
             return redirect()->back()->with('message',"toal amount of cr and dr must be equal");
         }
         Transaction::insert([
-
             'transaction_no'=>$request->transaction_no,
             'transaction_date'=>$request->transaction_date,
             'voucher_type_identifier'=>$request->voucher_type_identifier,

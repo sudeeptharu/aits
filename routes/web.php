@@ -41,6 +41,9 @@ Route::get('ledger-group',[LedgerGroupController::class,'index']);
 Route::post('/ledger-group/save',[LedgerGroupController::class,'store']);
 Route::put('/ledger-group/update',[LedgerGroupController::class,'update']);
 Route::get('/ledger-group/delete/{id}',[LedgerGroupController::class,'destroy']);
+Route::get('/ledger-group/recursion',[LedgerGroupController::class,'recursion']);
+Route::get('/ledger-group/incomeStatement',[LedgerGroupController::class,'incomeStatement']);
+
 
 /*Tests*/
 Route::get('/classification/{identifier}',[TestController::class,'classification']);

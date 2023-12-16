@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -49,11 +50,17 @@ class Ledger extends Model
         return null;
     }
 
-    public function ledgerTotalAmount($ledgerId)
+    public function getAmountAttribute()
     {
-        return $this->ledgerAmounts()
-            ->where('ledger_id', $ledgerId)
-            ->first()
-            ->total_amount ?? 0;
+        if(TransactionEntry::where('ledger_id',$this->id))
+        {
+            $amt1= TransactionEntry::where('ledger_id',$this->id)->where('dc',1)->sum('amount');
+            $amt2= TransactionEntry::where('ledger_id',$this->id)->where('dc',0)->sum('amount');
+            return $amt2-$amt1;
+        }else{
+            return 0;
+        }
+
     }
+
 }

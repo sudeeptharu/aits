@@ -32,6 +32,4 @@ class LedgerClassification extends Model
             ];
         });
     }
-
-
 }

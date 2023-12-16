@@ -44,6 +44,16 @@ class LedgerGroup extends Model
     {
         return $this->children()->with('allDescendants','ledgers',);
     }
+    public function allDescendantsIds()
+    {
+        $ledgersIds = $this->children()->pluck('ledgers')->toArray();
+
+        foreach ($this->children as $child) {
+            $ledgersIds = array_merge($ledgersIds, $child->allDescendantsIds());
+        }
+
+        return $ledgersIds;
+    }
 
     public static function amount($ledger_id)
     {

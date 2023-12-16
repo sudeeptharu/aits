@@ -23,7 +23,19 @@
                 <h2>Total Assets:{{$totalLiabilities}}</h2>
 
             </div>
+        </div>
+            <div class="col-6">
+                @foreach($incomes as $income)
+                <ul>
+                @if($income->ledgers)
 
+                <li>
+                    {{$ledgers->title}}-{{$ledgers->amount}}
+                </li>
+                @endif
+                    </ul>
+                @endforeach
+            </div>
 
     </section>
 </div>
